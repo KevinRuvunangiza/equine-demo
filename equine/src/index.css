@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+@theme {
+  /* Custom Color Palette */
+  --color-hunter-green: #2e5d4b;
+  --color-hunter-green-dark: #1f3d32;
+  --color-hunter-green-light: #3d7360;
+  --color-warm-cream: #f5f5f0;
+  --color-charcoal: #1f2937;
+  --color-emergency: #c05621;
+  --color-emergency-dark: #9a4419;
+
+  /* Typography Scale */
+  --font-family-display: "Cormorant Garamond", serif;
+  --font-family-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing for equestrian elegance */
+  --spacing-hero: 12rem;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-charcoal);
+  background-color: var(--color-warm-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities */
+.text-hunter {
+  color: var(--color-hunter-green);
+}
+
+.bg-hunter {
+  background-color: var(--color-hunter-green);
+}
+
+.bg-hunter-dark {
+  background-color: var(--color-hunter-green-dark);
+}
+
+.bg-emergency {
+  background-color: var(--color-emergency);
+}
+
+.border-hunter {
+  border-color: var(--color-hunter-green);
+}
+
+/* Display Typography */
+.font-display {
+  font-family: var(--font-family-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(46, 93, 75, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover transforms */
+.hover-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(46, 93, 75, 0.15);
+}
+
+/* Custom gradient overlays */
+.gradient-overlay {
+  position: relative;
+}
+
+.gradient-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(31, 61, 50, 0.7) 0%,
+    rgba(31, 61, 50, 0.4) 100%
+  );
+  z-index: 1;
+}
+
+.gradient-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Noise texture overlay for depth */
+.noise-texture {
+  position: relative;
+}
+
+.noise-texture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Link hover effects */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-warm-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-hunter-green);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hunter-green-dark);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(192, 86, 33, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(192, 86, 33, 0.8);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
